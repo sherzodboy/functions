@@ -100,3 +100,120 @@ const greet = (greeting) => {
 
 greet('Hi')('David');
 */
+
+// & call, apply and bind ------------------------------------
+/*
+const avisales = {
+  airline: 'Airways',
+  airCode: 'Uz',
+  bookings: [],
+
+  // book: function () {},
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.airCode} ${flightNum}`
+    );
+
+    this.bookings.push({ flight: `${this.airCode} ${flightNum}`, name });
+  },
+};
+
+avisales.book(123, 'Tom Jasper');
+
+const humoair = {
+  airline: 'Humoair',
+  airCode: 'Humo Uz',
+  bookings: [],
+};
+
+const smiss = {
+  airline: 'Smisair',
+  airCode: 'Usa',
+  bookings: [],
+};
+
+// Call method
+const book = avisales.book;
+
+console.log(humoair);
+book.call(humoair, 124, 'Ann');
+
+// apply method
+console.log(smiss);
+
+const flightData = [45, 'David'];
+book.apply(smiss, flightData);
+// book.call(smiss, ...flightData);
+
+// bind method
+const bookBn = book.bind(smiss);
+console.log(smiss);
+bookBn(44, 'Tom');
+
+avisales.planes = 100;
+avisales.planesBuy = function () {
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', avisales.planesBuy.bind(avisales));
+
+*/
+// &---------practise---------------
+/*
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+
+  // answers: new Array(4).fill(0),
+  answers: [0, 0, 0, 0],
+
+  registerNewAnswer() {
+    const answer = +prompt(
+      `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+    );
+
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
+
+    console.log(this.answers);
+  },
+};
+
+// poll.registerNewAnswer();
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+*/
+
+// &----------------------IIFE---------
+/*
+const runOne = () => {
+  console.log('This function run more times');
+};
+runOne();
+
+(function () {
+  console.log('This function will never run');
+})();
+*/
+// &----------------------Closure---------
+/*
+const secureBooking = () => {
+  let passangerCont = 0;
+
+  return function () {
+    passangerCont++;
+    console.log(passangerCont);
+  };
+};
+
+const booker = secureBooking();
+booker();
+
+console.dir(booker);
+*/
